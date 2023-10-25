@@ -1,0 +1,221 @@
+$date
+	Wed Oct 25 15:29:30 2023
+$end
+$version
+	QuestaSim Version 2021.3
+$end
+$timescale
+	1ns
+$end
+
+$scope module tb_wishbone_slave $end
+$var parameter 32 ! CLK_PERIOD $end
+$var reg 1 " clk $end
+$var reg 1 # rst_n $end
+$var reg 4 $ adr [3:0] $end
+$var reg 32 % dat_mosi [31:0] $end
+$var wire 1 & dat_miso [31] $end
+$var wire 1 ' dat_miso [30] $end
+$var wire 1 ( dat_miso [29] $end
+$var wire 1 ) dat_miso [28] $end
+$var wire 1 * dat_miso [27] $end
+$var wire 1 + dat_miso [26] $end
+$var wire 1 , dat_miso [25] $end
+$var wire 1 - dat_miso [24] $end
+$var wire 1 . dat_miso [23] $end
+$var wire 1 / dat_miso [22] $end
+$var wire 1 0 dat_miso [21] $end
+$var wire 1 1 dat_miso [20] $end
+$var wire 1 2 dat_miso [19] $end
+$var wire 1 3 dat_miso [18] $end
+$var wire 1 4 dat_miso [17] $end
+$var wire 1 5 dat_miso [16] $end
+$var wire 1 6 dat_miso [15] $end
+$var wire 1 7 dat_miso [14] $end
+$var wire 1 8 dat_miso [13] $end
+$var wire 1 9 dat_miso [12] $end
+$var wire 1 : dat_miso [11] $end
+$var wire 1 ; dat_miso [10] $end
+$var wire 1 < dat_miso [9] $end
+$var wire 1 = dat_miso [8] $end
+$var wire 1 > dat_miso [7] $end
+$var wire 1 ? dat_miso [6] $end
+$var wire 1 @ dat_miso [5] $end
+$var wire 1 A dat_miso [4] $end
+$var wire 1 B dat_miso [3] $end
+$var wire 1 C dat_miso [2] $end
+$var wire 1 D dat_miso [1] $end
+$var wire 1 E dat_miso [0] $end
+$var reg 1 F we $end
+$var reg 1 G cyc $end
+$var reg 1 H stb $end
+$var wire 1 I ack $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0"
+0#
+b0 $
+b0 %
+0F
+0G
+0H
+b1010 !
+0E
+0D
+0C
+0B
+0A
+0@
+0?
+0>
+0=
+0<
+0;
+0:
+09
+08
+07
+06
+05
+04
+03
+02
+01
+00
+0/
+0.
+0-
+0,
+0+
+0*
+0)
+0(
+0'
+0&
+0I
+$end
+#5
+1"
+#10
+0"
+#15
+1"
+#20
+1#
+b1 $
+b11011110101011011011111011101111 %
+1F
+1G
+1H
+0"
+#25
+1"
+xE
+xD
+xC
+xB
+xA
+x@
+x?
+x>
+x=
+x<
+x;
+x:
+x9
+x8
+x7
+x6
+x5
+x4
+x3
+x2
+x1
+x0
+x/
+x.
+x-
+x,
+x+
+x*
+x)
+x(
+x'
+x&
+1I
+#30
+0G
+0H
+b10 $
+b11001010111111101011101010111110 %
+1G
+1H
+0"
+#35
+1"
+#40
+0G
+0H
+b1 $
+0F
+1G
+1H
+0"
+#45
+1"
+1E
+1D
+1C
+1B
+0A
+1@
+1?
+1>
+0=
+1<
+1;
+1:
+19
+18
+07
+16
+15
+04
+13
+12
+01
+10
+0/
+1.
+0-
+1,
+1+
+1*
+1)
+0(
+1'
+1&
+#50
+0G
+0H
+b10 $
+1G
+1H
+0"
+#55
+1"
+0E
+1A
+0?
+0;
+05
+14
+11
+1/
+0+
+0)
+#60
+0G
+0H
