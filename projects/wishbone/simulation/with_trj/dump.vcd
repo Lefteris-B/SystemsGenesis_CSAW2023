@@ -1,0 +1,89 @@
+$date
+	Wed Oct 25 15:39:25 2023
+$end
+
+$version
+	Synopsys VCS version S-2021.09
+$end
+
+$timescale
+	1ns
+$end
+
+$comment Csum: 1 737fa060135b5b8c $end
+
+
+$scope module tb_wishbone_slave $end
+$var reg 1 ! clk $end
+$var reg 1 " rst_n $end
+$var reg 4 # adr [3:0] $end
+$var reg 32 $ dat_mosi [31:0] $end
+$var wire 32 % dat_miso [31:0] $end
+$var reg 1 & we $end
+$var reg 1 ' cyc $end
+$var reg 1 ( stb $end
+$var wire 1 ) ack $end
+$upscope $end
+
+$enddefinitions $end
+
+#0
+$dumpvars
+0)
+0!
+0'
+0"
+0(
+0&
+b0000 #
+b00000000000000000000000000000000 $
+b00000000000000000000000000000000 %
+$end
+#5
+1!
+#10
+0!
+#15
+1!
+#20
+1"
+b0001 #
+b11011110101011011011111011101111 $
+1&
+1'
+1(
+0!
+#25
+1!
+1)
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx %
+#30
+0&
+0!
+#35
+1!
+b11011110101011011011111011101111 %
+#40
+b0010 #
+b11001010111111101011101010111110 $
+1&
+0!
+#45
+1!
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx %
+#50
+0&
+0!
+#55
+1!
+0)
+#60
+b0011 #
+b00010010001101000101011001111000 $
+1&
+0!
+#65
+1!
+#70
+0'
+0(
