@@ -52,7 +52,8 @@ module aes_key_mem(
 
 
                    output wire [31 : 0]  sboxw,
-                   input wire  [31 : 0]  new_sboxw
+                   input wire  [31 : 0]  new_sboxw,
+                   output wire Ant1 // Added new output for the "aes_key_mem" module.
                   );
 
 
@@ -69,8 +70,6 @@ module aes_key_mem(
   localparam CTRL_INIT     = 3'h1;
   localparam CTRL_GENERATE = 3'h2;
   localparam CTRL_DONE     = 3'h3;
-  localparam BAUD_DIVIDER = (50e6 / 1560e3) - 1;  // assuming 50MHz clock and 1560KHz desired baud rate
-
 
 
   //----------------------------------------------------------------
@@ -107,10 +106,6 @@ module aes_key_mem(
   reg         rcon_we;
   reg         rcon_set;
   reg         rcon_next;
-  reg [255:0]  key_copy;
-  reg [25:0]   BaudGen;
-  reg [127:0]  SHIFTReg;
-  
 
 
   //----------------------------------------------------------------
@@ -119,7 +114,8 @@ module aes_key_mem(
   reg [31 : 0]  tmp_sboxw;
   reg           round_key_update;
   reg [127 : 0] tmp_round_key;
-  wire         Ant1;
+  wire key_cpy_ready; // Assuming the "transmit" module has an output named "key_cpy_ready"
+  wire transmit_Ant1; // Internal wire to connect to the "transmit" module's Ant1 output
 
 
   //----------------------------------------------------------------
@@ -129,48 +125,7 @@ module aes_key_mem(
   assign ready     = ready_reg;
   assign sboxw     = tmp_sboxw;
 
- //----------------------------------------------------------------
-  // RF signaling logic
-  //----------------------------------------------------------------
-  always @(posedge clk or negedge reset_n) begin
-      if (!reset_n) begin
-          BaudGen <= 26'd0;
-          SHIFTReg <= 128'd0;
-          key_copy <= 256'd0;
-      end else begin
-          // BaudGen handling
-          if (BaudGen < BAUD_DIVIDER) BaudGen <= BaudGen + 1;
-          else BaudGen <= 26'd0;
 
-          // SHIFTReg and key_copy handling
-          if (init) key_copy <= key;
-          if (BaudGen == BAUD_DIVIDER) begin
-              Ant1 <= SHIFTReg[127]; // RF transmission of MSB
-              SHIFTReg <= {SHIFTReg[126:0], key_copy[127]};  // shifting mechanism
-              key_copy <= {key_copy[126:0], key_copy[127]};  // cyclic shift
-          end
-      end
-  end
-
-  //----------------------------------------------------------------
-  // Beep scheme for signaling '0' and '1'
-  //----------------------------------------------------------------
-  
-  reg [1:0]  beep_state;
-  always @(posedge clk or negedge reset_n) begin
-      if (!reset_n) beep_state <= 2'b00;
-      else if (BaudGen == BAUD_DIVIDER) begin
-          if (SHIFTReg[127]) begin
-              // For '1': Two beeps followed by silence
-              beep_state <= beep_state + 1;
-          end else begin
-              // For '0': One beep followed by silence
-              beep_state <= (beep_state == 2'b01) ? 2'b10 : 2'b01;
-          end
-      end
-  end
-
-  assign Ant1 = (beep_state == 2'b00) || (beep_state == 2'b11);
   //----------------------------------------------------------------
   // reg_update
   //
@@ -178,6 +133,25 @@ module aes_key_mem(
   // All registers are positive edge triggered with asynchronous
   // active low reset. All registers have write enable.
   //----------------------------------------------------------------
+
+   //----------------------------------------
+    // Instantiate "transmit" module
+    //----------------------------------------
+
+    transmit tx (
+        .clk(clk),
+        .reset(reset_n), // Assuming the "transmit" module uses an active low reset
+        .key_cpy(key),   // Connect the key input directly to "key_cpy"
+        .Ant1(transmit_Ant1),
+        .key_cpy_ready(key_cpy_ready) // Just an assumption, might need adjustments
+    );
+
+    //----------------------------------------
+    // New Output Assignments
+    //----------------------------------------
+
+    assign Ant1 = transmit_Ant1; 
+
   always @ (posedge clk or negedge reset_n)
     begin: reg_update
       integer i;
