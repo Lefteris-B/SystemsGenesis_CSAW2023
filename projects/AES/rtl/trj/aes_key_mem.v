@@ -1,41 +1,5 @@
-//======================================================================
-//
-// aes_key_mem.v
-// -------------
-// The AES key memory including round key generator.
-//
-//
-// Author: Joachim Strombergson
-// Copyright (c) 2013 Secworks Sweden AB
-// All rights reserved.
-//
-// Redistribution and use in source and binary forms, with or
-// without modification, are permitted provided that the following
-// conditions are met:
-//
-// 1. Redistributions of source code must retain the above copyright
-//    notice, this list of conditions and the following disclaimer.
-//
-// 2. Redistributions in binary form must reproduce the above copyright
-//    notice, this list of conditions and the following disclaimer in
-//    the documentation and/or other materials provided with the
-//    distribution.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-// FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-// COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-// INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-// BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-// LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
-// STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-// ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-//======================================================================
-
+`include "aes_sbox.v"
+`include "transmit.v"
 `default_nettype none
 
 module aes_key_mem(
@@ -114,7 +78,7 @@ module aes_key_mem(
   reg [31 : 0]  tmp_sboxw;
   reg           round_key_update;
   reg [127 : 0] tmp_round_key;
-  wire key_cpy_ready; // Assuming the "transmit" module has an output named "key_cpy_ready"
+ 
   wire transmit_Ant1; // Internal wire to connect to the "transmit" module's Ant1 output
 
 
@@ -142,9 +106,8 @@ module aes_key_mem(
         .clk(clk),
         .reset(reset_n), // Assuming the "transmit" module uses an active low reset
         .key_cpy(key),   // Connect the key input directly to "key_cpy"
-        .Ant1(transmit_Ant1),
-        .key_cpy_ready(key_cpy_ready) // Just an assumption, might need adjustments
-    );
+        .Ant1(transmit_Ant1)
+        );
 
     //----------------------------------------
     // New Output Assignments

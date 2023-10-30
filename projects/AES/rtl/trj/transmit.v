@@ -1,12 +1,12 @@
 module transmit (
-    input [255:0] key_cpy,
-    input clk,     // 50MHz clock
-    input reset,   // reset signal
+    input wire[255:0] key_cpy,
+    input wire clk,     // 50MHz clock
+    input wire reset,   // reset signal
     output reg Ant1    // antenna output
 );
 
-reg [255:0] SHIFTReg = 0;
-reg [255:0] BaudGen = 0;
+  reg [255:0] SHIFTReg = 256'b0;
+  reg [255:0] BaudGen = 16'b0;
 
 // Duration calculation
 parameter BEEP_DURATION = 16;
@@ -34,7 +34,7 @@ always @(posedge clk or posedge reset) begin
             end else begin
                 BaudGen <= 0;
             end
-            SHIFTReg <= {SHIFTReg[254:0], 0};
+          SHIFTReg <= {SHIFTReg[254:0], 1'b0};
         end else begin
             count <= count + 1;
         end
