@@ -50,6 +50,12 @@ Feel free to reach out to us if you have any questions or would like to collabor
 
 Happy hacking!
 
+
+## Affiliation
+
+- **University:** [International Hellenic University](https://www.ihu.gr/)
+- **Lab:** [Web Engineering and Intelligent Systems Lab (wesis)](https://wesis.cs.ihu.gr/)
+s
 ---
 
 **Disclaimer**: This repository is intended for educational and research purposes only. Malicious use of the provided designs is strictly prohibited.
