@@ -26,8 +26,12 @@ We've developed three different hardware malware projects using SystemVerilog an
 2. **Wishbone Bus Peripheral Denial-of-Service (DoS) Malware**
    - Location: [Project Folder](/projects/wishbone)
    - Description: This project showcases a Denial-of-Service malware designed for a Wishbone bus peripheral.
+
+3. **Caravel Wishbone Bus Peripheral Denial-of-Service (DoS) Malware**
+   - Location: [Project Folder](/projects/wishbone_caravel)
+   - Description: This project showcases a Denial-of-Service malware designed for the SPI Wishbone back-door state machine.
    
-3. **AES Encryption/Decryption IP Block Information Leakage Malware**
+4. **AES Encryption/Decryption IP Block Information Leakage Malware**
    - Location: [Project Folder](/projects/AES)
    - Description: In this project, we've created malware to leak sensitive information (key) from an AES encryption/decryption IP block.
 
