@@ -19,7 +19,7 @@ We've developed three different hardware malware projects using SystemVerilog an
    - Description: This project showcases a Denial-of-Service malware designed for a Wishbone bus peripheral.
    
 3. **AES Encryption/Decryption IP Block Information Leakage Malware**
-   - Location: [Project Folder](/aes_leakage)
+   - Location: [Project Folder](/tree/main/projects/AES)
    - Description: In this project, we've created malware to leak sensitive information (key) from an AES encryption/decryption IP block.
 
 ## Prompt Engineering Techniques
