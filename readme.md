@@ -6,6 +6,15 @@ Welcome to the SystemsGenesis CSAW 2023 AI Hardware Attack Challenge repository!
 
 This repository contains the digital designs created by the SystemsGenesys team for the CSAW 2023 AI Hardware Attack Challenge. The challenge focused on creating hardware-based malware using Large Language Models (LLMs), with ChatGPT4 as the chosen LLM.
 
+## Getting Started
+
+If you'd like to explore our projects, please refer to the respective project folders for detailed instructions on how to use and test them.
+
+Feel free to reach out to us if you have any questions!
+
+Happy hacking!
+
+
 ## Projects
 
 We've developed three different hardware malware projects using SystemVerilog and various techniques:
@@ -26,6 +35,9 @@ We've developed three different hardware malware projects using SystemVerilog an
 
 We utilized the Chain Of Thought (CoT) technique for prompt engineering and also employed the recipe and persona prompt pattern to interact with the LLM effectively.
 
+More details about the techniques, prompts and any other details about the projects: 
+- Location: [Project Folder](/presentation)
+
 ## Verification and Testing
 
 To ensure the functionality and security of our designs, we used [EDAplayground](https://www.edaplayground.com/) for testing and verification.
@@ -41,15 +53,6 @@ To ensure the functionality and security of our designs, we used [EDAplayground]
 ## License
 
 All projects in this repository are open source under the [Apache License](LICENSE).
-
-## Getting Started
-
-If you'd like to explore or contribute to our projects, please refer to the respective project folders for detailed instructions on how to use and test them.
-
-Feel free to reach out to us if you have any questions or would like to collaborate!
-
-Happy hacking!
-
 
 ## Affiliation
 
