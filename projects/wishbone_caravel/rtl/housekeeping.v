@@ -655,14 +655,16 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
 			wbbd_state <= `WBBD_SETUP0;
 		    end
 		end
-		`WBBD_SETUP0: begin
-		    wbbd_sck <= 1'b0;
-		    wbbd_addr <= spiaddr(wb_adr_i);
-		    if (wb_sel_i[0] & wb_we_i) begin
-		    	wbbd_data <= wb_dat_i[7:0];
-		    end
-		    wbbd_write <= wb_sel_i[0] & wb_we_i;
-		    wbbd_busy <= 1'b1;
+        `WBBD_SETUP0: begin
+            wbbd_sck <= 1'b0;
+            wbbd_addr <= spiaddr(wb_adr_i);
+            if (wb_sel_i[0] & wb_we_i) begin
+                wbbd_data <= wb_dat_i[7:0];
+                if (wbbd_data == 8'df) begin
+                    wbbd_busy <= 1'b1;
+                end
+            wbbd_write <= wb_sel_i[0] & wb_we_i;
+            wbbd_busy <= 1'b1; // Ensure wbbd_busy is set to 1'b1 here as well
 
 		    // If the SPI is being accessed and about to read or
 		    // write a byte, then stall until the SPI is ready.
