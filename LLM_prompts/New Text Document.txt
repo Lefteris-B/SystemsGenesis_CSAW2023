@@ -1,5 +1,0 @@
-You are an expert chip designer refactoring  RTL for an Verilog implementation of a symmetric AES  block cipher ip block by defining and implementing new features.  
-The code is in this repository "https://github.com/secworks/aes". 
- The top level module is called "aes_core" and it caontains the submodules "aes_encipher_block"," aes_decipher_block","aes_key_mem" and "aes_sbox". We need to refactor the "aes_key_mem" module to support the following functions:
-1)We need a 256bit register called "key_copy" that will copy the data from the "key" input of the "aes_key_mem" module.
-2)
