@@ -11,15 +11,15 @@ This repository contains the digital designs created by the SystemsGenesys team 
 We've developed three different hardware malware projects using SystemVerilog and various techniques:
 
 1. **UART Peripheral Denial-of-Service (DoS) Malware**
-   - Location: [Project Folder](/uart_dos)
+   - Location: [Project Folder](/projects/UART)
    - Description: This project features a Denial-of-Service malware targeting a UART peripheral.
    
 2. **Wishbone Bus Peripheral Denial-of-Service (DoS) Malware**
-   - Location: [Project Folder](/wishbone_dos)
+   - Location: [Project Folder](/projects/wishbone)
    - Description: This project showcases a Denial-of-Service malware designed for a Wishbone bus peripheral.
    
 3. **AES Encryption/Decryption IP Block Information Leakage Malware**
-   - Location: [Project Folder](/tree/main/projects/AES)
+   - Location: [Project Folder](/projects/AES)
    - Description: In this project, we've created malware to leak sensitive information (key) from an AES encryption/decryption IP block.
 
 ## Prompt Engineering Techniques
